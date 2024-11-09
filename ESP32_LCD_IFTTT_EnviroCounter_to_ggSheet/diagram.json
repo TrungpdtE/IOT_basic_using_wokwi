@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-mini", "id": "bb1", "top": 46.6, "left": -108, "attrs": {} },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 9.6,
+      "left": 206.44,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -13.2,
+      "left": -63.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 71.15,
+      "left": -67.2,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -105.3, "left": 71.4, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 275.2,
+      "left": -13.6,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5", "bb1:4t.e", "green", [ "h-355.2", "v0", "h-19.2" ] ],
+    [ "esp:D0", "bb1:3t.e", "black", [ "h-364.8", "v0", "h-38.4" ] ],
+    [ "esp:D0", "dht1:GND", "black", [ "h-192" ] ],
+    [ "esp:14", "bb1:14t.c", "green", [ "h-86.25", "v-67.2", "h-105.6" ] ],
+    [ "bb1:14t.a", "dht1:SDA", "green", [ "v0", "h67.2" ] ],
+    [ "led1:A", "bb1:10t.a", "red", [ "v0" ] ],
+    [ "led1:C", "bb1:3t.a", "black", [ "v0" ] ],
+    [ "lcd1:GND", "dht1:GND", "yellow", [ "h-28.8", "v-57.6", "h153.6" ] ],
+    [ "lcd1:SDA", "esp:21", "magenta", [ "h-48", "v-105.4", "h422.4", "v-124.8", "h-19.2" ] ],
+    [ "lcd1:SCL", "esp:22", "blue", [ "h-38.4", "v125.1", "h470.4", "v-412.8", "h-9.6" ] ],
+    [ "lcd1:VCC", "bb1:17b.g", "red", [ "h-38.4", "v-134.3", "h9.6" ] ],
+    [ "dht1:VCC", "bb1:17b.f", "red", [ "v115.2", "h-9.6" ] ],
+    [ "esp:CLK", "bb1:17b.j", "red", [ "h0", "v19.2", "h-249.6", "v-67.2" ] ],
+    [ "r1:1", "bb1:4t.c", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:10t.c", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}

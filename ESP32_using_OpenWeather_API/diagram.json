@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "author": "Phạm Đặng Thanh Trung",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": -4.76,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 246.4,
+      "left": -61.6,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:GND", "esp:CMD", "black", [ "h-86.4", "v-105.6" ] ],
+    [ "lcd1:VCC", "esp:3V3", "red", [ "h-9.6", "v-191.9" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h-28.8", "v-67", "h230.4", "v-163.2" ] ],
+    [ "lcd1:SCL", "esp:23", "green", [ "h-28.8", "v-86.1", "h268.8", "v-182.4", "h-57.6" ] ]
+  ],
+  "dependencies": {}
+}

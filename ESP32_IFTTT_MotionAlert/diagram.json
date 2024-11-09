@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "author": "Huynh Tuan Anh",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 64.2, "left": -112.4, "attrs": {} },
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 62.3,
+      "left": 215.8,
+      "attrs": { "env": "micropython-20230426-v1.20.0" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -24.8, "left": 79.02, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 128.75,
+      "left": -28.8,
+      "attrs": { "value": "200" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 25.2,
+      "left": -111.4,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "led1:C", "bb1:tn.6", "black", [ "v0" ] ],
+    [ "led1:A", "bb1:7t.a", "red", [ "v0" ] ],
+    [ "pir1:GND", "bb1:tn.17", "black", [ "v0" ] ],
+    [ "pir1:VCC", "bb1:tp.15", "red", [ "v0" ] ],
+    [ "pir1:OUT", "esp:D12", "yellow", [ "v0" ] ],
+    [ "esp:D14", "bb1:13t.a", "orange", [ "h0" ] ],
+    [ "esp:GND.2", "bb1:tn.25", "black", [ "h0" ] ],
+    [ "r1:1", "bb1:7t.c", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:13t.c", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 28.8,
+      "left": 43.24,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -64,
+      "left": -133.6,
+      "attrs": {}
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 26.8, "left": 278.4, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 342.4,
+      "left": -80.8,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": -90, "left": 224.6, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:CLK", "ldr1:VCC", "red", [ "h57.6", "v-278.4", "h-153.6", "v-9.6" ] ],
+    [ "esp:D0", "ldr1:GND", "black", [ "h48", "v-259.2", "h-28.8" ] ],
+    [ "esp:2", "ldr1:AO", "green", [ "h38.4", "v-201.6", "h-9.6" ] ],
+    [ "lcd1:SCL", "esp:19", "green", [ "h-57.6", "v-143.7", "h307.2", "v-134.4" ] ],
+    [ "lcd1:SDA", "esp:21", "black", [ "h345.6", "v-268.6" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h-38.4", "v-153.5", "h19.2" ] ],
+    [ "led1:C", "esp:GND.2", "green", [ "v0" ] ],
+    [ "esp:34", "ldr1:AO", "green", [ "h0" ] ],
+    [ "esp:3V3", "servo1:V+", "cyan", [ "h0.15", "v-57.6", "h172.8", "v86.4" ] ],
+    [ "servo1:PWM", "esp:22", "green", [ "h0" ] ],
+    [ "esp:32", "led1:A", "magenta", [ "h0" ] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h-19.2", "v-19.2" ] ]
+  ],
+  "dependencies": {}
+}

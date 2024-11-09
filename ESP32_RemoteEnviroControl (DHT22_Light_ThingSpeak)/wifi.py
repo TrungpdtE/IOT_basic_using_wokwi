@@ -1,0 +1,2 @@
+ssid = 'Wokwi-GUEST'
+password = ''

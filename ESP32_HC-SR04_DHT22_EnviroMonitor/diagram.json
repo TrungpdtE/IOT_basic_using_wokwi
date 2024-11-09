@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Lê Đức Trung",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 86.4, "left": -129.56, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 265.6,
+      "left": 188,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -113.7, "left": 53.5, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -170.4,
+      "left": -276.6,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "bz1:2", "esp:2", "green", [ "v28.8", "h249.2", "v-57.6", "h38.4" ] ],
+    [ "esp:GND.3", "bz1:1", "black", [ "h28.8", "v-96", "h-316.8", "v230.4", "h38.4" ] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "esp:15", "ultrasonic1:TRIG", "green", [ "v0", "h57.6", "v-211.2", "h-249.6" ] ],
+    [ "ultrasonic1:ECHO", "esp:0", "green", [ "v19.2", "h220", "v201.6" ] ],
+    [ "lcd1:GND", "ultrasonic1:GND", "black", [ "h-48", "v-268.8" ] ],
+    [ "esp:3V3", "lcd1:VCC", "red", [ "h-38.25", "v278.4" ] ],
+    [ "esp:21", "lcd1:SDA", "green", [ "h19.2", "v172.8", "h-163.2", "v57.6" ] ],
+    [ "esp:23", "lcd1:SCL", "green", [ "h48", "v201.6", "h-220.8", "v76.8" ] ]
+  ],
+  "dependencies": {}
+}
